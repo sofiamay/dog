@@ -1,13 +1,13 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
-  mode: 'development',
-  entry: './index',
+  mode: "development",
+  entry: "./index",
   output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'build'),
+    filename: "main.js",
+    path: path.resolve(__dirname, "build"),
     clean: true,
   },
   module: {
@@ -15,50 +15,50 @@ module.exports = {
       {
         test: /\.js$/i,
         exclude: /node_modules/,
-        include: path.resolve(__dirname, 'src/'),
+        include: path.resolve(__dirname, "src/"),
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            presets: ['@babel/preset-env']
-          }
-        }
+            presets: ["@babel/preset-env"],
+          },
+        },
       },
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader']
+        use: ["style-loader", "css-loader"],
       },
       {
         test: /\.(jpg|jpeg|png|svg|gif)$/i,
-        type: 'asset/resource',
+        type: "asset/resource",
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        type: 'asset/resource',
-      }
-    ]
+        type: "asset/resource",
+      },
+    ],
   },
-  devtool: 'inline-source-map',
+  devtool: "inline-source-map",
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Phaser Game',
-      template: path.resolve(__dirname, 'index.html'),
+      title: "Phaser Game",
+      template: path.resolve(__dirname, "index.html"),
     }),
     new CopyWebpackPlugin({
       patterns: [
         {
           from: path.posix.join(
-            path.resolve(__dirname, 'src/static').replace(/\\/g, '/'),
-            '*'
+            path.resolve(__dirname, "src/static").replace(/\\/g, "/"),
+            "*"
           ),
-          to: path.resolve(__dirname, 'build'),
-        }
-      ]
+          to: path.resolve(__dirname, "build"),
+        },
+      ],
     }),
   ],
   devServer: {
-    static: path.resolve(__dirname, 'build/static'),
+    static: path.resolve(__dirname, "build/static"),
     hot: true,
     port: 8080,
     compress: true,
   },
-}
+};

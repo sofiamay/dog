@@ -1,4 +1,5 @@
 import Phaser from "phaser";
+import { addGamePieces } from "../graphics/board-graphics";
 
 export default class Game extends Phaser.Scene {
   constructor() {
@@ -7,10 +8,13 @@ export default class Game extends Phaser.Scene {
     });
   }
 
-  preload() {}
+  preload() {
+  }
 
   create() {
-    // let self = this;
+    let self = this;
+
+    var gamePieces = addGamePieces(this);
   }
 
   update() {}

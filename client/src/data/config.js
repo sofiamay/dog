@@ -1,5 +1,7 @@
 export default {
   TITLE: "Dog Board Game",
-  WIDTH: 1200,
+  // In pixels
+  WIDTH: 800, 
   HEIGHT: 800,
+  UNIT_SIZE: 32,
 };
